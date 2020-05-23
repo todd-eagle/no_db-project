@@ -26,28 +26,32 @@ export default class ListContainers extends Component {
         })
     }
 
+    randomNum(list) {
+        return Math.ceil((Math.random() * (list.length) -1) )
+    }
+    
+    renderPubList(list) {
+
+        const pubObjects =  list.map(element =>{
+            return element
+        })[this.randomNum(list)] 
+
+        return pubObjects
+
+    }
+
+    renderPrivList(list) {
+        return list.map(element =><ViewUserList data={element} />)
+    }
 
     render(){
-        
-        // this.state.init ? console.log(this.state.globalList) : console.log("still loading")
 
         if (this.state.init){
 
-            const privObjects = this.state.privList.map(element =>{
-                return <ViewUserList data={element} />
-            })
+            const {globalList, privList} = this.state
 
-            const pubObjects =  this.state.globalList.map(element =>{
-                return element
-            })
-    
-            const rand = Math.ceil((Math.random() * (this.state.globalList.length) -1) )
-           
-
-            const singleElement = pubObjects[rand]
-
-            const pubObject =  <ViewDestCard pub_data={singleElement} />
-          
+            const pubObject =  <ViewDestCard pub_data={this.renderPubList(globalList)} />
+            const privObjects = this.renderPrivList(privList)
 
             return (
                 <> 
