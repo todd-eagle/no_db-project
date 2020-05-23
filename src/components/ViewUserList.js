@@ -1,10 +1,10 @@
 import React from 'react'
+import Form from './Form'
 
 function ViewUserList(props){
 
-    const {image, location, country} = props.data
-
-    //console.log(props)
+    const {id, image, location, country} = props.data
+    const {removeFn} = props
     return (
         <>
         <div>
@@ -12,9 +12,12 @@ function ViewUserList(props){
             <p>Location: {location}</p>
             <p>country: {country}</p>
         </div>
+        <button onClick={ ()=> removeFn(id)}>Remove</button>
+        
+       <Form {...props}/>
+           
         </>
-    
-        )
+    )
 
 }
 

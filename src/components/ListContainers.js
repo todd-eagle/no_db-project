@@ -8,8 +8,11 @@ export default class ListContainers extends Component {
         super()
         this.state = {
             globalList: [],
+            filteredGlobal:[],
             privList:[]
         }
+        this.removeDest = this.removeDest.bind(this)
+        this.updateDest = this.updateDest.bind(this)
     }
 
    async componentDidMount(){
@@ -17,11 +20,39 @@ export default class ListContainers extends Component {
             this.setState ({
                 globalList: res.data, init:1 
             })
-             const filteredGlobal = this.state.globalList.filter(element => {
+             const filteredPrivate = this.state.globalList.filter(element => {
                 return element.addedToList === true
             })
             this.setState ({
-                privList: filteredGlobal
+                privList: filteredPrivate
+            })
+        })
+    }
+
+    removeDest(id){
+        /* 
+        I would just delete off privList, but as set up, 
+        I can only delete of global list to show CRUD  
+        */
+        Axios.delete(`/api/destination/${id}`).then (res => {
+            this.setState({globalList: res.data})
+            const filteredPrivate = this.state.globalList.filter(element => {
+                return element.addedToList === true
+            })
+            this.setState ({
+                privList: filteredPrivate
+            })
+        })
+    }
+
+    updateDest(id) {
+        Axios.put(`/api/destination/${id}`).then(res =>{
+            this.setState({globalList: res.data})
+            const filteredPrivate = this.state.globalList.filter(element => {
+                return element.addedToList === true
+            })
+            this.setState ({
+                privList: filteredPrivate
             })
         })
     }
@@ -33,7 +64,7 @@ export default class ListContainers extends Component {
     renderPubList(list) {
 
         const pubObjects =  list.map(element =>{
-            return element
+            return element 
         })[this.randomNum(list)] 
 
         return pubObjects
@@ -41,7 +72,13 @@ export default class ListContainers extends Component {
     }
 
     renderPrivList(list) {
-        return list.map(element =><ViewUserList key={`${element.locatopn}-${element.id}`} data={element} />)
+        return list.map(element =>{
+            return <ViewUserList 
+                key={`${element.location}-${element.id}`} 
+                data={element} removeFn={this.removeDest} 
+                updateFn={this.updateDest}
+                />
+            })
     }
 
     render(){
