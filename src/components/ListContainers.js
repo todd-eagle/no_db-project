@@ -60,17 +60,7 @@ export default class ListContainers extends Component {
                 </>
                 )
     
-        } else {
-            return (
-                <> 
-              
-                </>
-                )
         }
-
-
-
-       
-
+        return <></>
     }
 }
