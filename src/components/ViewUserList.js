@@ -3,6 +3,8 @@ import React from 'react'
 function ViewUserList(props){
 
     const {image, location, country} = props.data
+
+    //console.log(props)
     return (
         <>
         <div>
