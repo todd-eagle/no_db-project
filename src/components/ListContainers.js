@@ -26,8 +26,8 @@ export default class ListContainers extends Component {
         })
     }
 
-    randomNum(list) {
-        return Math.ceil((Math.random() * (list.length) -1) )
+    randomNum(rand) {
+        return Math.ceil((Math.random() * (rand.length) -1) )
     }
     
     renderPubList(list) {
@@ -41,7 +41,7 @@ export default class ListContainers extends Component {
     }
 
     renderPrivList(list) {
-        return list.map(element =><ViewUserList data={element} />)
+        return list.map(element =><ViewUserList key={`${element.locatopn}-${element.id}`} data={element} />)
     }
 
     render(){
