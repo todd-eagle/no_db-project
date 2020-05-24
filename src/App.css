@@ -1,38 +1,200 @@
-.App {
-  text-align: center;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-family: bebas-neue-pro-semiexpanded, sans-serif;
+    font-weight: 400;  
+    font-style: normal;
+    background-color: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+  
+  
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.wrapper > * {
+padding: 2rem 4rem;
 }
 
-.App-link {
-  color: #61dafb;
+.main {
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header {
+    background-color: black;
+    color: white;
 }
+
+.logo {
+    margin-left: 5rem;
+}
+
+.main-logo {
+    display: block;
+    font-size: 3.4rem;
+    padding-bottom: .6rem;
+}
+
+.sub-logo {
+    display: block;
+    font-size: 1.8rem;
+    letter-spacing: .1rem;
+}
+
+.abolition {
+  font-family: "abolition", sans-serif;
+  letter-spacing: 0.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.main-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+}
+
+.dest-heading {
+    text-transform: uppercase;
+    font-size: 3rem;
+    align-self: start;
+    margin-left: 8rem;
+    padding-bottom: 3rem;
+}
+
+.main-view {
+    display: flex;
+    width: 80%;
+    border: 1px solid #DDDDDD;
+}
+
+.main-img {
+    width: 65%;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 1.8rem;
+    background-color: white;
+}
+
+.location {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+.description {
+    padding: 1rem 1rem ;
+    font-size: 2rem;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+ .btn-style {
+    
+     /* width: 15rem; */
+     /* position: absolute; */
+     padding: 1.3rem 2rem;
+     color: white;
+     font-size: 2.2rem;
+     background-color: black;
+     border: none;
+     border-radius: 1rem;
+     cursor: pointer;
+ }
+
+ .main-add-button {
+     display: flex;
+     justify-content: flex-end;
+     margin-top: 9rem;
+     padding: 0 1rem;
+ }
+
+ .pros-cons {
+     padding: .3rem 1rem;
+     font-weight: 600;
+ }
+
+ .my-list-header {
+    margin-top: 8rem;
+    display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding-bottom: 2rem;
+ }
+
+ .h2-container {
+     margin-left: 8rem;
+ }
+ 
+ .new-btn-container{
+     margin-top: -1.5rem;
+     margin-right: 8rem;
+ }
+
+ .my-list {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+ }
+
+ .heading-2 {
+     font-size: 3rem;
+ }
+
+.card {
+    width: 30rem;
+    margin: 0 .5rem;
+    border: 1px solid #DDDDDD;
+    margin-bottom: 1rem;
+}
+
+.card-image {
+    width: 30rem;
+    height: 20rem;
+}
+
+.card-info {
+    padding: 1rem 1.5rem;
+
+}
+
+.card-location {
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-blurb {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    padding: 1rem 1rem;
+
+}
+
+.footer {
+    margin-top: 8rem;
+    height: 40vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./img/1.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
