@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ViewUserList from './ViewUserList'
 import ViewDestCard from './ViewDestCard'
+import FormCreate from './FormCreate'
 import Axios from 'axios'
 
 export default class ListContainers extends Component {
@@ -13,6 +14,7 @@ export default class ListContainers extends Component {
         }
         this.removeDest = this.removeDest.bind(this)
         this.updateDest = this.updateDest.bind(this)
+        this.createDest = this.createDest.bind(this)
     }
 
    async componentDidMount(){
@@ -29,12 +31,21 @@ export default class ListContainers extends Component {
         })
     }
 
+    createDest(data){
+        const body = {data}
+        Axios.post('./api/destination', body).then(res => {
+            this.setState({globalList: res.data})
+            const filteredPrivate = this.state.globalList.filter(element => {
+                return element.addedToList === true
+            })
+            this.setState ({
+                privList: filteredPrivate
+            })
+        })
+    }
+
     removeDest(id){
-        /* 
-        I would just delete off privList, but as set up, 
-        I can only delete of global list to show CRUD  
-        */
-        Axios.delete(`/api/destination/${id}`).then (res => {
+        Axios.delete(`/api/destination/${id}`).then(res => {
             this.setState({globalList: res.data})
             const filteredPrivate = this.state.globalList.filter(element => {
                 return element.addedToList === true
@@ -81,8 +92,13 @@ export default class ListContainers extends Component {
                 key={`${element.location}-${element.id}`} 
                 data={element} removeFn={this.removeDest} 
                 updateFn={this.updateDest}
+                createFn={this.createDest}
                 />
-            })
+        })
+    }
+
+    renderCreateForm(){
+        return <FormCreate createFn={this.createDest} />
     }
 
     render(){
@@ -90,15 +106,18 @@ export default class ListContainers extends Component {
         if (this.state.init){
 
             const {globalList, privList} = this.state
-
+            const formObject = this.renderCreateForm()
             const pubObject =  <ViewDestCard pub_data={this.renderPubList(globalList)} />
             const privObjects = this.renderPrivList(privList)
 
             return (
-                <> 
-                {pubObject}
-                {privObjects}
-                </>
+                <>
+                    {pubObject}
+                    <section>
+                        {formObject}
+                        {privObjects}
+                    </section>
+                </>    
                 )
     
         }

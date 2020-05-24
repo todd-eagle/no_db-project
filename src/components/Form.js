@@ -7,6 +7,8 @@ export default class Form extends Component{
             location: this.props.data.location,
             country: this.props.data.country,
             image: this.props.data.image,
+            blurb: this.props.data.blurb,
+            description: this.props.data.description,
             pros: [],
             cons: [],
             verdict:'',
@@ -17,9 +19,8 @@ export default class Form extends Component{
     handleAdd(e) {
         e.preventDefault()
         const {id} = this.props.data
+        console.log(id)
         const {updateFn} = this.props
-        //console.log(this.state)
-
         updateFn(id, this.state)
     }
 
@@ -27,7 +28,7 @@ export default class Form extends Component{
         this.setState({
           [e.target.name]: e.target.value,
         })
-      }
+    }
 
     render(){
 

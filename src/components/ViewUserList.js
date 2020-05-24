@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from './Form'
 
-function ViewUserList(props){
+export default function ViewUserList(props){
 
     const {id, image, location, country} = props.data
     const {removeFn} = props
@@ -11,14 +11,12 @@ function ViewUserList(props){
             <img src={image} />
             <p>Location: {location}</p>
             <p>country: {country}</p>
+            <button onClick={ ()=> removeFn(id)}>Remove</button>
+            
+            <Form {...props} /> 
         </div>
-        <button onClick={ ()=> removeFn(id)}>Remove</button>
-        
-       <Form {...props}/>
-           
+              
         </>
     )
 
 }
-
-export default ViewUserList

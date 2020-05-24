@@ -8,7 +8,7 @@ module.exports = {
     postDest: (req, res) => {
 
         const {location, country, image, blurb, 
-            description, pros, cons, verdict, addedToList} = req.body
+            description, pros, cons, verdict, addedToList} = req.body.data
         
         const newDest = {id, location, country, image, blurb, 
             description, pros, cons, verdict, addedToList} 
