@@ -22,7 +22,8 @@ module.exports = {
     editDest: (req, res) => {
         const {dest_id} = req.params
         const {location, country, image, blurb, 
-            description, pros, cons, verdict, addedToList} = req.body
+            description, pros, cons, verdict, addedToList} = req.body.data
+        
 
         const index = destinations.findIndex((element) => element.id === +dest_id)
 
@@ -31,6 +32,7 @@ module.exports = {
         }
 
         const updateDest = {id: +dest_id, location, country, image, blurb, description, pros, cons, verdict, addedToList} 
+        
          
         destinations[index] = updateDest    
 

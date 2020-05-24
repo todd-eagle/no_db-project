@@ -16,8 +16,11 @@ export default class Form extends Component{
 
     handleAdd(e) {
         e.preventDefault()
-        const {location, country, image} = this.state
-        this.props.updateFn(this.props.data.id)
+        const {id} = this.props.data
+        const {updateFn} = this.props
+        //console.log(this.state)
+
+        updateFn(id, this.state)
     }
 
     handleChange(e) {

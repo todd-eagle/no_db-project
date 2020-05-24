@@ -45,9 +45,13 @@ export default class ListContainers extends Component {
         })
     }
 
-    updateDest(id) {
-        Axios.put(`/api/destination/${id}`).then(res =>{
+    updateDest(id, data) {
+        const body = {data}
+        console.log(body)
+       
+        Axios.put(`/api/destination/${id}`, body).then(res =>{
             this.setState({globalList: res.data})
+            console.log(res.data)
             const filteredPrivate = this.state.globalList.filter(element => {
                 return element.addedToList === true
             })
