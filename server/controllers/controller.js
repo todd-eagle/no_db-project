@@ -24,6 +24,7 @@ module.exports = {
         const {location, country, image, blurb, 
             description, pros, cons, verdict, addedToList} = req.body.data
         
+            // console.log(req.body.data)
 
         const index = destinations.findIndex((element) => element.id === +dest_id)
 
@@ -31,7 +32,20 @@ module.exports = {
             return res.status(404).send("Destination not found.")
         }
 
-        const updateDest = {id: +dest_id, location, country, image, blurb, description, pros, cons, verdict, addedToList} 
+        // const updateDest = {id: +dest_id, location, country, image, blurb, description, pros, cons, verdict, addedToList} 
+
+        const updateDest = {
+            id: +dest_id,
+            location: location || destinations[index].location,
+            country: country || destinations[index].country,
+            image: image || destinations[index].image,
+            blurb: blurb || destinations[index].blurb,
+            description: description || destinations[index].description,
+            pros: pros || destinations[index].pros,
+            cons: cons || destinations[index].cons,
+            verdict: verdict || destinations[index].verdict,
+            addedToList: addedToList || destinations[index].addedToList
+          }
         
          
         destinations[index] = updateDest    

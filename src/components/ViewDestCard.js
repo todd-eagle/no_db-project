@@ -1,7 +1,8 @@
 import React from 'react'
 
 export default function ViewDestCard(props) {
-    const {image, location, country, description} = props.pub_data
+    const {id, image, location, country, description} = props.pub_data
+    const {addtoListFn} = props
    
     return(
         <section className="main-display">
@@ -13,7 +14,7 @@ export default function ViewDestCard(props) {
                     <p className="location">{location}, {country}</p>
                     <p className="description">{description}</p>
                     <div className="main-add-button">
-                        <button className="btn-style abolition"><span class="plus"></span>Add Destination</button>
+                        <button onClick={()=> addtoListFn(id)} className="btn-style abolition"><span class="plus"></span>Add Destination</button>
                     </div> 
                 </div>
             </div>

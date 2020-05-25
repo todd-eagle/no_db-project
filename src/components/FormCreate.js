@@ -45,6 +45,8 @@ export default class FormCreate extends Component{
                 return (
                     <div className="modal">
                         <div className="create-form">
+                            
+                            <button onClick={()=> closeFormFn()} class="x">x</button>
 
                             <p className="form-text">Create Destination</p>
 

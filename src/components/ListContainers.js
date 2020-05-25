@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import ReactDOM from "react-dom";
 import ViewUserList from './ViewUserList'
 import ViewDestCard from './ViewDestCard'
 import FormCreate from './FormCreate'
@@ -13,13 +12,15 @@ export default class ListContainers extends Component {
             globalList: [],
             filteredGlobal:[],
             privList:[],
-            show: false
+            show: false,
+            addedToList: true
         }
         this.removeDest = this.removeDest.bind(this)
         this.updateDest = this.updateDest.bind(this)
         this.createDest = this.createDest.bind(this)
         this.showForm = this.showForm.bind(this)
         this.closeForm = this.closeForm.bind(this)
+        this.changeAddtoList = this.changeAddtoList.bind(this)
     }
 
    async componentDidMount(){
@@ -89,6 +90,14 @@ export default class ListContainers extends Component {
         })
     }
 
+    changeAddtoList(id){
+        const data = {
+            addedToList: true
+        }
+       this.updateDest(id, data)
+       console.log("the data here is " +id)
+    }
+
     readShowState(){
     }
 
@@ -130,7 +139,7 @@ export default class ListContainers extends Component {
 
             const {globalList, privList} = this.state
             const formObject = this.renderCreateForm()
-            const pubObject =  <ViewDestCard pub_data={this.renderPubList(globalList)} />
+            const pubObject =  <ViewDestCard addtoListFn={this.changeAddtoList} pub_data={this.renderPubList(globalList)} />
             const privObjects = this.renderPrivList(privList)
 
             return (
