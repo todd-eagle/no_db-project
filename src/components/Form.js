@@ -49,6 +49,11 @@ export default class Form extends Component{
                     name="country"
                     value={this.state.country}
                 />
+                 <input 
+                    onChange={(e) => this.handleChange(e)}
+                    name="description"
+                    value={this.state.description}
+                />
                 <button type='submit'>update</button>
             </form>
         )

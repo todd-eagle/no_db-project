@@ -114,8 +114,18 @@ export default class ListContainers extends Component {
                 <>
                     {pubObject}
                     <section>
-                        {formObject}
-                        {privObjects}
+                    <div class="my-list-header">
+                        <div class="h2-container">
+                            <h2 class="heading-2">MY TOP PLACES TO VISIT BEFORE I DIE</h2>
+                        </div>
+                        <div class="new-btn-container">  
+                            <button class="btn-style abolition">New Destination</button>
+                        </div>
+                    </div>
+                        <div className="my-list">
+                            {/* {formObject} */}
+                            {privObjects}
+                        </div>    
                     </section>
                 </>    
                 )
