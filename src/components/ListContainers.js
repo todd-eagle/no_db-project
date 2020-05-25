@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
+import ReactDOM from "react-dom";
 import ViewUserList from './ViewUserList'
 import ViewDestCard from './ViewDestCard'
 import FormCreate from './FormCreate'
 import Axios from 'axios'
+
 
 export default class ListContainers extends Component {
     constructor(){
@@ -10,11 +12,14 @@ export default class ListContainers extends Component {
         this.state = {
             globalList: [],
             filteredGlobal:[],
-            privList:[]
+            privList:[],
+            show: false
         }
         this.removeDest = this.removeDest.bind(this)
         this.updateDest = this.updateDest.bind(this)
         this.createDest = this.createDest.bind(this)
+        this.showForm = this.showForm.bind(this)
+        this.closeForm = this.closeForm.bind(this)
     }
 
    async componentDidMount(){
@@ -72,6 +77,21 @@ export default class ListContainers extends Component {
         })
     }
 
+    showForm(){
+        this.setState({
+            show: true
+        })
+    }
+
+    closeForm(){
+        this.setState({
+            show: false
+        })
+    }
+
+    readShowState(){
+    }
+
     randomNum(rand) {
         return Math.ceil((Math.random() * (rand.length) -1) )
     }
@@ -93,12 +113,15 @@ export default class ListContainers extends Component {
                 data={element} removeFn={this.removeDest} 
                 updateFn={this.updateDest}
                 createFn={this.createDest}
+                showFormfn={this.showForm}
                 />
         })
     }
 
     renderCreateForm(){
-        return <FormCreate createFn={this.createDest} />
+        return <FormCreate createFn={this.createDest}  
+                show={this.state.show}
+                closeFormFn={this.closeForm}/>
     }
 
     render(){
@@ -119,11 +142,11 @@ export default class ListContainers extends Component {
                             <h2 class="heading-2">MY TOP PLACES TO VISIT BEFORE I DIE</h2>
                         </div>
                         <div class="new-btn-container">  
-                            <button class="btn-style abolition">New Destination</button>
+                            <button onClick={()=>this.showForm()} class="btn-style abolition">New Destination</button>
                         </div>
                     </div>
                         <div className="my-list">
-                            {/* {formObject} */}
+                            {formObject}
                             {privObjects}
                         </div>    
                     </section>

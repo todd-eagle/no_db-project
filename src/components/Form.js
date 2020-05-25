@@ -33,29 +33,34 @@ export default class Form extends Component{
     render(){
 
         return (
-            <form onSubmit={(e) => this.handleAdd(e)} >
-                <input 
-                    onChange={(e) => this.handleChange(e)}
-                    name="image"
-                    value={this.state.image}
-                />
-                <input 
-                    onChange={(e) => this.handleChange(e)}
-                    name="location"
-                    value={this.state.location}
-                />
-                <input 
-                    onChange={(e) => this.handleChange(e)}
-                    name="country"
-                    value={this.state.country}
-                />
-                 <input 
-                    onChange={(e) => this.handleChange(e)}
-                    name="description"
-                    value={this.state.description}
-                />
-                <button type='submit'>update</button>
-            </form>
+            <div className="update-form">
+                
+                <p className="form-text">Update Destination</p>
+
+                <form className="update" onSubmit={(e) => this.handleAdd(e)} >
+                    <input 
+                        onChange={(e) => this.handleChange(e)}
+                        name="image"
+                        value={this.state.image}
+                    />
+                    <input 
+                        onChange={(e) => this.handleChange(e)}
+                        name="location"
+                        value={this.state.location}
+                    />
+                    <input 
+                        onChange={(e) => this.handleChange(e)}
+                        name="country"
+                        value={this.state.country}
+                    />
+                    <input 
+                        onChange={(e) => this.handleChange(e)}
+                        name="description"
+                        value={this.state.description}
+                    />
+                    <button className="subm-btn abolition" type='submit'>update</button>
+                </form>
+            </div>
         )
     }
 }

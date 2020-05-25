@@ -38,31 +38,43 @@ export default class FormCreate extends Component{
     }
 
     render(){
-        return (
-            <form onSubmit={(e) => this.handleAdd(e)} >
-                <input 
-                    onChange={(e) => this.handleChange(e)}
-                    name="image"
-                    placeholder="image"
-                />
-                <input 
-                    onChange={(e) => this.handleChange(e)}
-                    name="location"
-                    placeholder="location"
-                />
-                <input 
-                    onChange={(e) => this.handleChange(e)}
-                    name="country"
-                    placeholder="country"
-                />
-                 <input 
-                    onChange={(e) => this.handleChange(e)}
-                    name="description"
-                    placeholder="description"
-                />
+        const  {show, closeFormFn} = this.props
+            if(!show){
+                return null
+            }
+                return (
+                    <div className="modal">
+                        <div className="create-form">
 
-                <button type='submit'>save</button>
-            </form>
-        )
-    }
+                            <p className="form-text">Create Destination</p>
+
+                            <form  className="update" onSubmit={(e) => {this.handleAdd(e); closeFormFn() }}  >
+                                <input 
+                                    onChange={(e) => this.handleChange(e)}
+                                    name="image"
+                                    placeholder="image"
+                                />
+                                <input 
+                                    onChange={(e) => this.handleChange(e)}
+                                    name="location"
+                                    placeholder="location"
+                                />
+                                <input 
+                                    onChange={(e) => this.handleChange(e)}
+                                    name="country"
+                                    placeholder="country"
+                                />
+                                <textarea 
+                                    onChange={(e) => this.handleChange(e)}
+                                    name="description"
+                                    placeholder="description"
+                                >
+                                </textarea>
+
+                                <button  className="subm-btn abolition" type='submit'>save</button>
+                            </form>
+                        </div>  
+                    </div>
+                )
+        }
 }
