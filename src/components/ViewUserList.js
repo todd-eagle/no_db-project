@@ -8,9 +8,9 @@ export default function ViewUserList(props){
     return (
         <>
         <div className="card">
-            <div class="black-box">
-             <button onClick={(e) =>showFormfn()} >+</button>
-             <button onClick={ ()=> removeFn(id)}>-</button>
+        <div className="black-box">
+            <button className="delete-btn" onClick={()=> removeFn(id)}>-</button>
+             <button className="update-btn" onClick={(e) =>showFormfn()}>+</button>
              </div>
             <img className="card-image"  src={image} />
             <p className="card-location">{location}, {country}</p>

@@ -196,12 +196,36 @@ padding: 2rem 4rem;
 .black-box {
     opacity: 0;
     position: absolute;
-    right: 0;
-    width: 5rem;
+    top: .5rem;
+    right: .5rem;
+    width: 6rem;
     height: 3rem;
+    padding: .5rem;
     color: white;
-    background-color: black;
+    background-color: rgb(68, 68, 68);
+    border-radius: .5rem;
     cursor: pointer;
+}
+
+.update-btn, .delete-btn  {
+    background-color: black;
+    position: absolute;
+    color: white;
+    font-size: 2.2rem;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+}
+
+.delete-btn {
+    right:4rem;
+    top: 0rem;
+}
+
+.update-btn {
+    font-size: 2.6rem;
+    right: .75rem;
+    top: 0rem;
 }
 
 .card:hover > .black-box {
@@ -233,7 +257,7 @@ padding: 2rem 4rem;
 .update {
     display: flex;
     flex-direction: column;
-    padding:3rem 5rem;
+    padding:1rem 5rem 3rem 5rem;
     width: 50rem;
 }
 
@@ -256,6 +280,7 @@ textarea {
     font-size: 3rem;
     padding-bottom: 2rem;
     margin-left: 5rem;
+    padding-top:3rem;
 }
 
 .subm-btn{
